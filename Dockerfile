@@ -1,5 +1,8 @@
 FROM golang:1.15.1-buster as builder
 
+RUN go env -w GOPROXY=https://goproxy.cn,direct
+RUN go env -w GO111MODULE=on
+
 RUN mkdir /app 
 WORKDIR /app 
 
