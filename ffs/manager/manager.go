@@ -31,17 +31,16 @@ var (
 	// recover its last configured default StorageConfig from the datastore.
 	zeroConfig = ffs.StorageConfig{
 		Hot: ffs.HotConfig{
-			Enabled: true,
+			Enabled: false,
 			Ipfs: ffs.IpfsConfig{
-				AddTimeout: 30,
+				AddTimeout: 300, // 5 min
 			},
 		},
 		Cold: ffs.ColdConfig{
 			Enabled: true,
 			Filecoin: ffs.FilConfig{
-				RepFactor:       5,
-				TrustedMiners:   []string{"t016303", "t016304", "t016305", "t016306", "t016309"},
-				DealMinDuration: util.MinDealDuration * 2,
+				RepFactor:       1,
+				DealMinDuration: util.MinDealDuration,
 				FastRetrieval:   true,
 				DealStartOffset: 72 * 60 * 60 / util.EpochDurationSeconds, // 72hs
 			},
